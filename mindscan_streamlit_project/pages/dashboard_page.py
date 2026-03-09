@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from database.db_manager import get_recent_journal_entries
 from utils.data_loader import get_dashboard_sample_trend, get_sample_journal_entries
+from services.wellness_service import get_weekly_insight
 
 st.header("Emotional Dashboard")
 
@@ -24,17 +25,28 @@ if entries and len(entries) >= 1:
     elif avg < -0.2 or mn < -0.2:
         latest_risk = "Moderate"
 else:
+    avg = 0.0
     sample = get_dashboard_sample_trend()
     if sample is not None:
         trend = sample[["day", "sentiment_score"]]
         latest_risk = sample["risk_band"].iloc[-1] if "risk_band" in sample.columns else "Moderate"
+        avg = trend["sentiment_score"].mean()
     else:
         trend = pd.DataFrame({"Day": ["Mon","Tue","Wed","Thu","Fri"], "sentiment_score": [0.1,-0.2,-0.5,-0.1,0.2]})
         trend = trend.rename(columns={"Day": "day"})
         latest_risk = "Moderate"
+        avg = trend["sentiment_score"].mean()
 
 st.line_chart(trend.set_index("day"))
-st.success(f"Current Risk: {latest_risk}")
+
+col1, col2 = st.columns([1, 1])
+with col1:
+    st.metric("Wellness Indicator", latest_risk, "Based on recent entries" if entries else "Sample data")
+with col2:
+    avg_val = round(avg, 2)
+    st.metric("Avg. Sentiment", f"{avg_val:.2f}", "Higher = more positive")
+
+st.info("💡 " + get_weekly_insight(entries or [], avg, latest_risk))
 
 # Sample dataset reference (expandable)
 with st.expander("Sample Journal Dataset (for reference)"):
