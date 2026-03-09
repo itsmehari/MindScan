@@ -1,0 +1,8 @@
+day,sentiment_score,risk_band
+Mon,0.1,Low
+Tue,-0.2,Moderate
+Wed,-0.5,Moderate
+Thu,-0.1,Moderate
+Fri,0.2,Low
+Sat,-0.3,Moderate
+Sun,0.0,Low

@@ -1,0 +1,16 @@
+id,entry_text,sentiment_label,sentiment_score
+1,"I feel happy today and productive. Had a great workout this morning.",Positive,0.65
+2,"I feel exhausted and stressed with assignments. Could not sleep well.",Negative,-0.58
+3,"Today was normal and nothing unusual happened. Routine day at work.",Neutral,0.05
+4,"I feel extremely tired and overwhelmed with work. Could not focus properly.",Negative,-0.72
+5,"I am grateful for my family and friends. Feeling calm and content.",Positive,0.55
+6,"Anxious about the upcoming exam. Mind keeps racing.",Negative,-0.45
+7,"Woke up late and missed breakfast. Feeling sluggish all day.",Negative,-0.38
+8,"Completed a small project. Feeling accomplished.",Positive,0.42
+9,"Another day at the office. Same as usual.",Neutral,-0.02
+10,"I feel hopeful about the future. Taking small steps each day.",Positive,0.51
+11,"Struggling with deadlines. Sleep has been poor this week.",Negative,-0.61
+12,"Good conversation with a friend. Felt supported.",Positive,0.48
+13,"Could not concentrate. Feel scattered and unfocused.",Negative,-0.52
+14,"Meditated for 10 minutes. Feel a bit calmer.",Neutral,0.12
+15,"I feel hopeless and tired. Nothing seems to work.",Negative,-0.78
